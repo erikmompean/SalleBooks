@@ -16,4 +16,8 @@
     </string>
     <string name="register">No account yet?</string>
     <string name="prompt_username">Username</string>
+    <string name="register_title">Register</string>
+    <string name="register_button">Create account</string>
+    <string name="account_ok">Account created successfully</string>
+    <string name="account_fail">There was an error creating the account</string>
 </resources>
