@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.salle.erikdavid.sallebooks.RegisterActivity"
-    android:padding="@dimen/standard_padding">
+    android:padding="@dimen/standard_padding"
+    android:layout_gravity="center">
 
     <TextView
         android:id="@+id/register_title"
@@ -74,10 +75,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/register_password_text_input"
+        android:layout_below="@id/register_checkbox"
         android:text="@string/register_button"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="@color/colorAccent"/>
+    <CheckBox
+        android:id="@+id/register_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_password_text_input"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/register_checkbox"
+        android:layout_alignBottom="@id/register_button"
+        android:layout_toEndOf="@id/register_checkbox"
+        android:text="@string/see_password" />
 </RelativeLayout>

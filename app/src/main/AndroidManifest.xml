@@ -26,7 +26,7 @@
         <activity
             android:name=".RegisterActivity"
             android:parentActivityName=".LoginActivity" />
-        <activity android:name=".MainActivity" android:theme="@style/SplashTheme"/>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

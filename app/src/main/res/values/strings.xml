@@ -20,4 +20,5 @@
     <string name="register_button">Create account</string>
     <string name="account_ok">Account created successfully</string>
     <string name="account_fail">There was an error creating the account</string>
+    <string name="see_password">See password</string>
 </resources>
