@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "514255507327",
+    "firebase_url": "https://readedbooks-197617.firebaseio.com",
+    "project_id": "readedbooks-197617",
+    "storage_bucket": "readedbooks-197617.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514255507327:android:7f998874cb0830e2",
+        "android_client_info": {
+          "package_name": "com.salle.erikdavid.sallebooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514255507327-m266682g5ljh5of5548v8crv67k6kme4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn0oFH7RTAdp5cjiSKO7uyts31D19RoGc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

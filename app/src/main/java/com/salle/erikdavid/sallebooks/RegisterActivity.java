@@ -24,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText mUsernameView;
     private EditText mPasswordView;
     private CheckBox mSeePass;
+    private int maxAccounts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +85,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             registerSuccessful = false;
         }
 
+        if (username.contains("~")){
+            mUsernameView.setError(getString(R.string.error_field_required));
+            registerSuccessful = false;
+        }
+
+        if (username.contains("~")){
+            mUsernameView.setError(getString(R.string.error_field_required));
+            registerSuccessful = false;
+        }
         if (registerSuccessful){
             createAccount(email, username, password);
         }
@@ -92,9 +102,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void createAccount(String email, String username, String password) {
         // Writing into database
         SharedPreferences.Editor editor = getSharedPreferences(KeyConstants.MINIDATABASE_NAME, MODE_PRIVATE).edit();
-        editor.putString(KeyConstants.EMAIL, email);
-        editor.putString(KeyConstants.USERNAME, username);
-        editor.putString(KeyConstants.PASSWORD, password);
+        editor.putString(email, username+"~"+password);
+
         editor.apply();
 
         // Return to login

@@ -46,6 +46,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
+ * @author Erik & David
  */
 public class LoginActivity extends AppCompatActivity implements OnClickListener{
 
@@ -53,7 +54,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener{
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private TextView mToRegisterView;
-    Button mEmailSignInButton;
+    private Button mEmailSignInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,19 +103,25 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener{
         mPasswordView.setError(null);
 
         SharedPreferences sharedPref = getSharedPreferences(KeyConstants.MINIDATABASE_NAME, MODE_PRIVATE);
-        String savedEmail = sharedPref.getString(KeyConstants.EMAIL, null);
-        String savedPassword = sharedPref.getString(KeyConstants.PASSWORD, null);
+        String account = sharedPref.getString(email, null);
+        String savedPassword = null;
+        if(account != null){
+            savedPassword = account.split("~")[1];
+        }
 
-        if(savedEmail != null && savedPassword != null){
-            if(savedEmail.equals(email) && savedPassword.equals(password)){
+        if(savedPassword != null){
+            if(savedPassword.equals(password)){
                 loginSuccessfull = true;
             } else {
                 Toast.makeText(this, "Email or password incorrect", Toast.LENGTH_SHORT).show();
             }
+        }else {
+            Toast.makeText(this, "Email incorrect", Toast.LENGTH_SHORT).show();
         }
 
         if (loginSuccessfull){
-            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            UserSingleton.createInstance(email, password);
+            Intent i = new Intent(LoginActivity.this, SplashScreenActivity.class);
             startActivity(i);
         }
     }

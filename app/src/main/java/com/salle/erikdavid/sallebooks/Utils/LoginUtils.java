@@ -2,6 +2,11 @@ package com.salle.erikdavid.sallebooks.Utils;
 
 import android.util.Patterns;
 
+/**
+ * Clase que agrupa un conjunto de metodos para suplementar a {@link com.salle.erikdavid.sallebooks.LoginActivity}
+ * esta clase se comento originalmente en ingles.
+ * @author Erik & David
+ */
 public class LoginUtils {
 
     /**

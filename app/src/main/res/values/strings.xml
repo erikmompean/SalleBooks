@@ -11,6 +11,7 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="error_bad_character">Sorry you cannot use this character ~ on username or password</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
@@ -21,4 +22,14 @@
     <string name="account_ok">Account created successfully</string>
     <string name="account_fail">There was an error creating the account</string>
     <string name="see_password">See password</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Search</string>
+    <string name="detail_author">Author:</string>
+    <string name="detail_release_date">Release date:</string>
+    <string name="detail_description">Description:</string>
+    <string name="add_readed">add to readed</string>
+    <string name="add_wish">Add to wish List</string>
+    <string name="title_activity_detail_book">DetailBook</string>
+    <string name="delete">Delete</string>
 </resources>
