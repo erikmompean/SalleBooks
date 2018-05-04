@@ -52,17 +52,19 @@ public class DetailBookView extends RelativeLayout {
     private void init(AttributeSet attrs, int defStyle) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         try {
+            assert inflater != null;
             inflater.inflate(R.layout.book_detail_frame,this);
         } catch (NullPointerException e) {
             Log.e("DetailBookView INIT", e.getMessage());
         }
+//
+//        // Load attributes
+//        final TypedArray a = getContext().obtainStyledAttributes(
+//                attrs, R.styleable.DetailBookView, defStyle, 0);
+//
+//        a.recycle();
 
-        // Load attributes
-        final TypedArray a = getContext().obtainStyledAttributes(
-                attrs, R.styleable.DetailBookView, defStyle, 0);
-
-
-        a.recycle();
+        assignComponent();
 
     }
 
@@ -91,7 +93,7 @@ public class DetailBookView extends RelativeLayout {
     private class DownLoadImageTask extends AsyncTask<String,Void,Bitmap> {
         ImageView imageView;
 
-        public DownLoadImageTask(ImageView imageView){
+        DownLoadImageTask(ImageView imageView){
             this.imageView = imageView;
         }
 
