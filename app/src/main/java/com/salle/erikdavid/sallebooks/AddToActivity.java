@@ -20,11 +20,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class AddToActivity extends AppCompatActivity {
-    private ImageView mImage;
-    private TextView mTitle;
-    private TextView mAuthor;
-    private TextView mReleaseDate;
-    private TextView mDescription;
+    private DetailBookView detailBookView;
     private JsonBook mJsonBook;
     private Book mBook;
 
@@ -33,11 +29,7 @@ public class AddToActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_to);
 
-        mImage = findViewById(R.id.detail_image);
-        mTitle = findViewById(R.id.detail_title);
-        mAuthor = findViewById(R.id.detail_author);
-        mReleaseDate = findViewById(R.id.detail_release_date);
-        mDescription = findViewById(R.id.detail_description);
+        detailBookView = findViewById(R.id.detail_book_view);
 
         // Get the information of the last screen
         mJsonBook = (JsonBook) getIntent().getSerializableExtra(KeyConstants.BOOK_BUNDLE);
@@ -46,15 +38,8 @@ public class AddToActivity extends AppCompatActivity {
 
         if(mJsonBook != null){
 
-            mTitle.setText(mJsonBook.getVolumeInfo().getTitle());
-            mAuthor.setText(mJsonBook.getVolumeInfo().getAuthors());
-            mReleaseDate.setText(mJsonBook.getVolumeInfo().getPublishedDate());
-            mDescription.setText(mJsonBook.getVolumeInfo().getDescription());
             String bookImage = mJsonBook.getVolumeInfo().getImageLinks().getSmallThumbnail();
-            if (bookImage != null){
-                new DownLoadImageTask(mImage).execute(bookImage);
-            }
-
+            detailBookView.assignValues(mJsonBook.getVolumeInfo().getTitle(), mJsonBook.getVolumeInfo().getAuthors(), mJsonBook.getVolumeInfo().getPublishedDate(), mJsonBook.getVolumeInfo().getDescription(), bookImage);
         }
 
     }
@@ -63,7 +48,7 @@ public class AddToActivity extends AppCompatActivity {
         User user = UserSingleton.getInstance();
         mBook.setEmailSaved(user.getEmail());
         mBook.save();
-        Toast.makeText(this, "Guardado Correctamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.well_saved, Toast.LENGTH_SHORT).show();
         Intent i = new Intent(AddToActivity.this, MainActivity.class);
         startActivity(i);
     }
@@ -79,31 +64,5 @@ public class AddToActivity extends AppCompatActivity {
     }
 
 
-    private class DownLoadImageTask extends AsyncTask<String,Void,Bitmap> {
-        ImageView imageView;
 
-        public DownLoadImageTask(ImageView imageView){
-            this.imageView = imageView;
-        }
-
-        protected Bitmap doInBackground(String...urls){
-            String urlOfImage = urls[0];
-            Bitmap logo = null;
-            try{
-                InputStream is = new URL(urlOfImage).openStream();
-                logo = BitmapFactory.decodeStream(is);
-            }catch(Exception e){ // Catch the download exception
-                e.printStackTrace();
-            }
-            return logo;
-        }
-
-        /*
-            onPostExecute(Result result)
-                Runs on the UI thread after doInBackground(Params...).
-         */
-        protected void onPostExecute(Bitmap result){
-            imageView.setImageBitmap(result);
-        }
-    }
 }

@@ -46,16 +46,18 @@ public class VolumeInfo implements Serializable {
     }
 
     public String getAuthors() {
-        String allAuthors = "";
-        for (int i = 0; i < authors.size(); i++) {
-            int next = i + 1;
-            if ( next == authors.size()) {
-                allAuthors = allAuthors + authors.get(i);
-            } else {
-                allAuthors = allAuthors + authors.get(i) + ", ";
+        StringBuilder allAuthors = new StringBuilder();
+        if (authors != null) {
+            for (int i = 0; i < authors.size(); i++) {
+                int next = i + 1;
+                if ( next == authors.size()) {
+                    allAuthors.append(authors.get(i));
+                } else {
+                    allAuthors.append(authors.get(i)).append(", ");
+                }
             }
         }
-        return allAuthors;
+        return allAuthors.toString();
     }
 
     public void setAuthors(ArrayList<String> authors) {
